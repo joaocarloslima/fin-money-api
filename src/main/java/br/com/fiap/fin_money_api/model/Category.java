@@ -25,4 +25,13 @@ public class Category {
         return icon;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Category [id=" + id + ", name=" + name + ", icon=" + icon + "]";
+    }
+
 }
