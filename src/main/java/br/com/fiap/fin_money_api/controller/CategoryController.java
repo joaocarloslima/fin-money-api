@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import br.com.fiap.fin_money_api.model.Category;
 import br.com.fiap.fin_money_api.repository.CategoryRepository;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("categories")
@@ -37,10 +39,9 @@ public class CategoryController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Category create(@RequestBody Category category) {
+    public Category create(@RequestBody @Valid Category category) {
         log.info("Cadastrando categoria " + category.getName());
-        repository.save(category);
-        return category;
+        return repository.save(category);
     }
 
     @GetMapping("{id}")
@@ -57,7 +58,7 @@ public class CategoryController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Category> update(@PathVariable Long id, @RequestBody Category category) {
+    public ResponseEntity<Category> update(@PathVariable Long id, @RequestBody @Valid Category category) {
         log.info("Atualizando categoria " + id + " com " + category);
 
         getCategory(id);
