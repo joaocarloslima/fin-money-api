@@ -20,31 +20,31 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         return http.authorizeHttpRequests(
             auth -> auth
-                .requestMatchers("/categories/**").hasRole("ADMIN")
+                //.requestMatchers("/categories/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
         )
         .httpBasic(Customizer.withDefaults())
         .build();
     }
     
-    @Bean
-    UserDetailsService userDetailsService(){
-        var users = List.of(
-            User
-                .withUsername("joao")
-                .password("$2a$12$1DLNWZDzr4xwa.hhL1Y6Run9t8q2dc2vw54QwUh9fnxW3cy5B8z1q")
-                .roles("ADMIN")
-                .build(),
-            User
-                .withUsername("maria")
-                .password("$2a$12$OyjhEIaHF.3/AxaNW.G.K.Zu.Pzv.B7.v9YPjXC6jm7svEhTE1Tcq")
-                .roles("USER")
-                .build()
+    // @Bean
+    // UserDetailsService userDetailsService(){
+    //     var users = List.of(
+    //         User
+    //             .withUsername("joao")
+    //             .password("$2a$12$1DLNWZDzr4xwa.hhL1Y6Run9t8q2dc2vw54QwUh9fnxW3cy5B8z1q")
+    //             .roles("ADMIN")
+    //             .build(),
+    //         User
+    //             .withUsername("maria")
+    //             .password("$2a$12$OyjhEIaHF.3/AxaNW.G.K.Zu.Pzv.B7.v9YPjXC6jm7svEhTE1Tcq")
+    //             .roles("USER")
+    //             .build()
 
 
-        );
-        return new InMemoryUserDetailsManager(users);
-    }
+    //     );
+    //     return new InMemoryUserDetailsManager(users);
+    // }
 
     @Bean
     PasswordEncoder passwordEncoder(){
