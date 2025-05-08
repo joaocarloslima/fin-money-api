@@ -23,6 +23,7 @@ public class SecurityConfig {
                 //.requestMatchers("/categories/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
         )
+        .csrf(csrf -> csrf.disable())
         .httpBasic(Customizer.withDefaults())
         .build();
     }
