@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -20,6 +21,7 @@ import br.com.fiap.fin_money_api.repository.UserRepository;
 import jakarta.annotation.PostConstruct;
 
 @Component
+@Profile("dev")
 public class DatabaseSeeder {
 
     @Autowired
