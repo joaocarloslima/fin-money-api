@@ -19,6 +19,7 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -27,6 +28,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@EqualsAndHashCode(of = "id")
 public class User implements UserDetails{
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
