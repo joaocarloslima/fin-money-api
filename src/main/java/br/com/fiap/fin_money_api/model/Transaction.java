@@ -3,6 +3,8 @@ package br.com.fiap.fin_money_api.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -38,6 +40,7 @@ public class Transaction {
     private BigDecimal amount;
 
     @PastOrPresent(message = "deve ser no passado ou hoje")
+    @JsonIgnore
     private LocalDate date;
 
     @NotNull(message = "campo obrigatório")

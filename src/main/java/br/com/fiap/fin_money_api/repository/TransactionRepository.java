@@ -1,6 +1,7 @@
 package br.com.fiap.fin_money_api.repository;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -8,6 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import br.com.fiap.fin_money_api.model.Transaction;
+import br.com.fiap.fin_money_api.model.TransactionType;
 
 public interface TransactionRepository extends JpaRepository<Transaction, Long>, JpaSpecificationExecutor<Transaction>{
     
@@ -22,5 +24,7 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long>,
 
 
     Page<Transaction> findByDescriptionContainingIgnoringCaseAndDate(String description, LocalDate date, Pageable pageable);
+
+    List<Transaction> findByType(TransactionType type);
     
 }
